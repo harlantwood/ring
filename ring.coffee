@@ -37,20 +37,3 @@ bottom = for tri in [0...32]
 log bottom.join ' '
 
 log ''
-
-
-
-
-
-
-
-# he = require 'he'
-# yang = 19904
-#
-# chars = for utf in [yang...yang+32]
-#   he.decode "&##{utf};"
-# log chars.join ' '
-#
-# chars = for utf in [yang+32...yang+64]
-#   he.decode "&##{utf};"
-# log chars.join ' '
