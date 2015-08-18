@@ -3,7 +3,7 @@
 fs = require 'fs'
 {log} = require 'lightsaber'
 {flatten} = require 'lodash'
-{floor} = Math
+{floor, pow} = Math
 
 class Ring
   hexWidth = 80
@@ -16,41 +16,19 @@ class Ring
   constructor: ->
     @strokes = []
 
-    for count in [0...32]
-      @strokes.push @stroke
-        yinyang: count % 2
-        x: count * 100 + 10
-        y: 10
+    for stroke in [0...6]
+      for count in [0...32]
+        @strokes.push @stroke
+          yinyang: floor(count / pow(2,stroke)) % 2
+          x: count * 100 + 10
+          y: (strokeHeightRoom * stroke) + 10
 
-    for count in [0...32]
-      @strokes.push @stroke
-        yinyang: floor(count / 2) % 2
-        x: count * 100 + 10
-        y: strokeHeightRoom + 10
-
-    for count in [0...32]
-      @strokes.push @stroke
-        yinyang: floor(count / 4) % 2
-        x: count * 100 + 10
-        y: (strokeHeightRoom * 2) + 10
-
-    for count in [0...32]
-      @strokes.push @stroke
-        yinyang: floor(count / 8) % 2
-        x: count * 100 + 10
-        y: (strokeHeightRoom * 3) + 10
-
-    for count in [0...32]
-      @strokes.push @stroke
-        yinyang: floor(count / 16) % 2
-        x: count * 100 + 10
-        y: (strokeHeightRoom * 4) + 10
-
-    for count in [0...32]
-      @strokes.push @stroke
-        yinyang: floor(count / 32) % 2
-        x: count * 100 + 10
-        y: (strokeHeightRoom * 5) + 10
+    for stroke in [0...6]
+      for count in [0...32]
+        @strokes.push @stroke
+          yinyang: floor(count / pow(2,stroke)) % 2
+          x: count * 100 + 10
+          y: hexHeight + strokeHeightRoom + (strokeHeightRoom * stroke) + 10
 
   stroke: ({yinyang, x, y}) ->
     return @yin  x, y if yinyang is 0
