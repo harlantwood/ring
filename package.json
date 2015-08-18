@@ -2,11 +2,17 @@
   "name": "ring",
   "version": "1.0.0",
   "description": "sacred decoder ring",
-  "scripts": {},
+  "scripts": {
+    "generate": "nodemon --watch ring-svg.coffee --exec ./ring-svg.coffee",
+    "reload": "browser-sync start --server --index ring.html --files ring.svg",
+    "watch": "npm run generate & npm run reload"
+  },
   "author": "Harlan T Wood",
   "devDependencies": {
+    "browser-sync": "^2.8.2",
     "he": "^0.5.0",
     "lightsaber": "^0.4.1",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "nodemon": "^1.4.1"
   }
 }
