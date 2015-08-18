@@ -1,3 +1,5 @@
+#!/usr/bin/env coffee
+
 {log} = require 'lightsaber'
 {flatten} = require 'lodash'
 
