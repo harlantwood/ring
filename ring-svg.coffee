@@ -10,41 +10,44 @@ class Ring
   hexWidth = 80
   hexHeight = 88.888888
 
-  strokeWidth = hexWidth
-  strokeHeightRoom = hexHeight / 6
-  strokeHeight = .6 * strokeHeightRoom
+  lineWidth = hexWidth
+  lineHeightRoom = hexHeight / 6
+  lineHeight = .6 * lineHeightRoom
 
-  yinOpening = strokeWidth / 8
-  yinStrokeWidth = (strokeWidth - yinOpening) / 2
+  yinOpening = lineWidth / 8
+  yinStrokeWidth = (lineWidth - yinOpening) / 2
 
-  hexHeightRoom = hexHeight + strokeHeight
-  hexWidthRoom  = hexWidth + strokeHeight*2
+  hexHeightRoom = hexHeight + lineHeight
+  hexWidthRoom  = hexWidth + lineHeight*2
 
   constructor: ->
-    @strokes = []
+    @lines = []
     @create()
 
   create: ->
     for hexagram in [0...64]
-      for stroke in [0...6]
-        yinyang = floor(hexagram / pow(2,stroke)) % 2
+      for line in [0...6]
+        yinyang = floor(hexagram / pow(2,line)) % 2
         x = (31.5 - abs(31.5 - hexagram)) * hexWidthRoom
-        y = strokeHeightRoom * stroke + 10
+        y = lineHeightRoom * line + 10
         y += hexHeightRoom if hexagram >= 32
-        @strokes.push @stroke { yinyang, x, y }
+        @lines.push @line { yinyang, x, y }
 
-  stroke: ({yinyang, x, y}) ->
+  line: ({yinyang, x, y}) ->
     return @yin  x, y if yinyang is 0
     return @yang x, y if yinyang is 1
 
   yin: (x, y) ->
     """
-      <rect x="#{x}" y="#{y}" width="#{yinStrokeWidth}" height="#{strokeHeight}" fill="black" />
-      <rect x="#{x + yinStrokeWidth + yinOpening}" y="#{y}" width="#{yinStrokeWidth}" height="#{strokeHeight}" fill="black" />
+      <rect x="#{x}" y="#{y}" width="#{yinStrokeWidth}" height="#{lineHeight}" fill="black" />
+      <rect x="#{x + yinStrokeWidth + yinOpening}" y="#{y}" width="#{yinStrokeWidth}" height="#{lineHeight}" fill="black" />
     """
 
   yang: (x, y) ->
-    """<rect x="#{x}" y="#{y}" width="#{strokeWidth}" height="#{strokeHeight}" fill="black" />"""
+    """<rect x="#{x}" y="#{y}" width="#{lineWidth}" height="#{lineHeight}" fill="black" />"""
+
+  element: (x, y) ->
+    """<rect x="#{x}" y="#{y}" width="#{lineWidth}" height="#{lineHeight}" fill="black" />"""
 
   svg: ->
     """
@@ -52,7 +55,7 @@ class Ring
         baseProfile="full"
         width="6400" height="800"
         xmlns="http://www.w3.org/2000/svg">
-        #{@strokes.join "\n"}
+        #{@lines.join "\n"}
       </svg>
     """
 
