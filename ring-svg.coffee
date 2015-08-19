@@ -2,7 +2,7 @@
 
 fs = require 'fs'
 {log} = require 'lightsaber'
-{flatten} = require 'lodash'
+{round} = require 'lodash'
 {abs, floor, pow} = Math
 
 class Ring
@@ -12,7 +12,7 @@ class Ring
 
   lineWidth = hexWidth
   lineHeightRoom = hexHeight / 6
-  lineHeight = .6 * lineHeightRoom
+  lineHeight = round .6 * lineHeightRoom, 4
 
   yinOpening = lineWidth / 8
   yinLineWidth = (lineWidth - yinOpening) / 2
@@ -46,6 +46,8 @@ class Ring
   yang: (x, y) -> @stroke x, y, lineWidth
 
   stroke: (x, y, width) ->
+    x = round x, 4
+    y = round y, 4
     """<rect x="#{x}" y="#{y}" width="#{width}" height="#{lineHeight}" fill="black" />"""
 
   svg: ->
