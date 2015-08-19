@@ -15,7 +15,7 @@ class Ring
   lineHeight = .6 * lineHeightRoom
 
   yinOpening = lineWidth / 8
-  yinStrokeWidth = (lineWidth - yinOpening) / 2
+  yinLineWidth = (lineWidth - yinOpening) / 2
 
   hexHeightRoom = hexHeight + lineHeight
   hexWidthRoom  = hexWidth + lineHeight*2
@@ -39,15 +39,14 @@ class Ring
 
   yin: (x, y) ->
     """
-      <rect x="#{x}" y="#{y}" width="#{yinStrokeWidth}" height="#{lineHeight}" fill="black" />
-      <rect x="#{x + yinStrokeWidth + yinOpening}" y="#{y}" width="#{yinStrokeWidth}" height="#{lineHeight}" fill="black" />
+      #{@stroke x, y, yinLineWidth}
+      #{@stroke x + yinLineWidth + yinOpening, y, yinLineWidth}
     """
 
-  yang: (x, y) ->
-    """<rect x="#{x}" y="#{y}" width="#{lineWidth}" height="#{lineHeight}" fill="black" />"""
+  yang: (x, y) -> @stroke x, y, lineWidth
 
-  element: (x, y) ->
-    """<rect x="#{x}" y="#{y}" width="#{lineWidth}" height="#{lineHeight}" fill="black" />"""
+  stroke: (x, y, width) ->
+    """<rect x="#{x}" y="#{y}" width="#{width}" height="#{lineHeight}" fill="black" />"""
 
   svg: ->
     """
