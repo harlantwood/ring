@@ -52,7 +52,7 @@ class Ring
 
   svg: ->
     """
-      <svg version="1.1" baseProfile="full" width="6400" height="800" xmlns="http://www.w3.org/2000/svg">
+      <svg version="1.1" baseProfile="full" width="3200" height="800" xmlns="http://www.w3.org/2000/svg">
       #{@lines.join "\n"}
       </svg>
     """
