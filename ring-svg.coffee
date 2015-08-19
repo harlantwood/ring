@@ -7,9 +7,11 @@ fs = require 'fs'
 
 class Ring
   hexWidth = 80
-  hexHeight = 88.88
+  hexHeight = 88.888888
 
   strokeWidth = hexWidth
+  yinOpening = strokeWidth / 8
+  yinStrokeWidth = (strokeWidth - yinOpening) / 2
   strokeHeightRoom = hexHeight / 6
   strokeHeight = .6 * hexHeight / 6
 
@@ -35,7 +37,10 @@ class Ring
     return @yang x, y if yinyang is 1
 
   yin: (x, y) ->
-    """<rect x="#{x}" y="#{y}" width="#{strokeWidth}" height="#{strokeHeight}" fill="white" />"""
+    """
+      <rect x="#{x}" y="#{y}" width="#{yinStrokeWidth}" height="#{strokeHeight}" fill="black" />
+      <rect x="#{x + yinStrokeWidth + yinOpening}" y="#{y}" width="#{yinStrokeWidth}" height="#{strokeHeight}" fill="black" />
+    """
 
   yang: (x, y) ->
     """<rect x="#{x}" y="#{y}" width="#{strokeWidth}" height="#{strokeHeight}" fill="black" />"""
