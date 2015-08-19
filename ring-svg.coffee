@@ -18,7 +18,7 @@ class Ring
   yinLineWidth = (lineWidth - yinOpening) / 2
 
   hexHeightRoom = hexHeight + lineHeight
-  hexWidthRoom  = hexWidth + lineHeight*2
+  hexWidthRoom  = hexWidth + lineHeight * 2
 
   constructor: ->
     @lines = []
@@ -50,11 +50,8 @@ class Ring
 
   svg: ->
     """
-      <svg version="1.1"
-        baseProfile="full"
-        width="6400" height="800"
-        xmlns="http://www.w3.org/2000/svg">
-        #{@lines.join "\n"}
+      <svg version="1.1" baseProfile="full" width="6400" height="800" xmlns="http://www.w3.org/2000/svg">
+      #{@lines.join "\n"}
       </svg>
     """
 
