@@ -4,7 +4,7 @@
   "description": "64 Hexagram Ring",
   "scripts": {
     "generate": "nodemon --watch ring.coffee --exec ./ring.coffee",
-    "reload": "browser-sync start --server --index ring.html --files ring.svg",
+    "reload": "browser-sync start --server --index ring.html --files *.svg",
     "watch": "npm run generate & npm run reload"
   },
   "author": "Harlan T Wood",
