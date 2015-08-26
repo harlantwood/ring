@@ -16,6 +16,7 @@ class Ring
   hexHeightRoom = (ringHeight - top) / 2
   hexHeight = hexHeightRoom - lineHeight
   lineHeightRoom = hexHeight / 6
+  lineHeightSpacing = lineHeightRoom - lineHeight
 
   ringCircumference = 81.1789
   hexWidthRoom = ringCircumference / 32
@@ -26,7 +27,7 @@ class Ring
   yinOpening = lineWidth / 8
   yinLineWidth = (lineWidth - yinOpening) / 2
 
-  log pjson { ringHeight, lineHeight, top, hexHeightRoom, hexHeight, lineHeightRoom, ringCircumference, hexWidthRoom, hexWidth, hexWidth, lineWidth, yinOpening, yinLineWidth }
+  log pjson { ringHeight, lineHeight, top, hexHeightRoom, lineHeightSpacing, hexHeight, lineHeightRoom, ringCircumference, hexWidthRoom, hexWidth, hexWidth, lineWidth, yinOpening, yinLineWidth }
 
   strokes: (target) -> flatten @hexagramStrokes target
 
