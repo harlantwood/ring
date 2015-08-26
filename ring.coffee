@@ -7,27 +7,29 @@ fs = require 'fs'
 
 browser = 10
 printer = 1
+phi = 1.6180339887498948482
 
 class Ring
 
-  ringHeight = 6
-  lineHeight = .3
-  top = lineHeight
-  hexHeightRoom = (ringHeight - top) / 2
-  hexHeight = hexHeightRoom - lineHeight
-  lineHeightRoom = hexHeight / 6
-  lineHeightSpacing = lineHeightRoom - lineHeight
+  chiselTip = .3
+  ringHeight = 4
+  lineHeight = chiselTip
+  # hexHeightRoom = (ringHeight - top)
+  lineHeightSpacing = lineHeight
+  lineHeightRoom = lineHeight + lineHeightSpacing
+  hexHeight = lineHeightRoom * 6
+  top = lineHeightSpacing / 2 + (ringHeight - hexHeight) / 2
 
   ringCircumference = 81.1789
-  hexWidthRoom = ringCircumference / 32
-  hexHorizSpace = lineHeight*1.2
-  left = hexHorizSpace/2
-  hexWidth = hexWidthRoom - hexHorizSpace
+  hexWidthRoom = ringCircumference / 64
+  hexWidth = chiselTip * 3
   lineWidth = hexWidth
-  yinOpening = lineWidth / 8
-  yinLineWidth = (lineWidth - yinOpening) / 2
+  yinOpening = chiselTip
+  yinLineWidth = chiselTip
+  hexHorizSpace = hexWidthRoom - hexWidth
+  left = hexHorizSpace / 2
 
-  log pjson { ringHeight, lineHeight, top, hexHeightRoom, lineHeightSpacing, hexHeight, lineHeightRoom, ringCircumference, hexWidthRoom, hexWidth, hexWidth, lineWidth, yinOpening, yinLineWidth }
+  log pjson { ringHeight, lineHeight, top, lineHeightSpacing, hexHeight, lineHeightRoom, ringCircumference, hexWidthRoom, hexWidth, hexWidth, lineWidth, yinOpening, yinLineWidth, left }
 
   strokes: (target) -> flatten @hexagramStrokes target
 
@@ -35,9 +37,8 @@ class Ring
     for hexagram in [0...64]
       for line in [0...6]
         yinyang = floor(hexagram / pow(2,line)) % 2
-        x = left + (31.5 - abs(31.5 - hexagram)) * hexWidthRoom
-        y = top + lineHeightRoom * line
-        y += hexHeightRoom if hexagram >= 32
+        x = left + hexagram * hexWidthRoom
+        y = top + line * lineHeightRoom
         @line { yinyang, x, y, target }
 
   line: ({yinyang, x, y, target}) ->
