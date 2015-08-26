@@ -10,8 +10,8 @@ printer = 1
 
 class Ring
 
-  ringHeight = 6
-  lineHeight = .3
+  ringHeight = 4
+  lineHeight = .2
   top = lineHeight
   hexHeightRoom = (ringHeight - top) / 2
   hexHeight = hexHeightRoom - lineHeight
@@ -19,7 +19,7 @@ class Ring
 
   ringCircumference = 81.1789
   hexWidthRoom = ringCircumference / 32
-  hexHorizSpace = lineHeight*1.2
+  hexHorizSpace = lineHeight*3
   left = hexHorizSpace/2
   hexWidth = hexWidthRoom - hexHorizSpace
   lineWidth = hexWidth
