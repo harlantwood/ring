@@ -15,7 +15,7 @@ fs = require 'fs'
 {flatten} = lodash = require 'lodash'
 {abs, floor, pow} = Math
 
-browser = 10
+browser = 64
 printer = 1
 phi = 1.6180339887498948482
 
