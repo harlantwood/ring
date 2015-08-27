@@ -1,5 +1,15 @@
 #!/usr/bin/env coffee
 
+##########################################################################################################
+##########################################################################################################
+##########################################################################################################
+### This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License ###
+### <http://creativecommons.org/licenses/by-nc/4.0/>                                                   ###
+### For commercial license, please contact Harlan T Wood -- wizardry@harlantwood.net                   ###
+##########################################################################################################
+##########################################################################################################
+##########################################################################################################
+
 fs = require 'fs'
 {log, p, pjson} = require 'lightsaber'
 {flatten} = lodash = require 'lodash'
@@ -69,6 +79,11 @@ class Ring
 
     """
       <svg version="1.1" baseProfile="full" width="#{width}" height="#{height}" xmlns="http://www.w3.org/2000/svg">
+      <!--
+        This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License
+        <http://creativecommons.org/licenses/by-nc/4.0/>
+        For commercial license, please contact Harlan T Wood -- wizardry@harlantwood.net
+      -->
       #{@strokes(target).join "\n"}
       #{if target is browser then @border width, height else ''}
       </svg>
