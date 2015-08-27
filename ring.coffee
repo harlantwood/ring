@@ -5,7 +5,7 @@
 ##########################################################################################################
 ### This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License ###
 ### <http://creativecommons.org/licenses/by-nc/4.0/>                                                   ###
-### For commercial license, please contact Harlan T Wood -- wizardry@harlantwood.net                   ###
+### For commercial licenses, please contact Harlan T Wood -- wizardry@harlantwood.net                  ###
 ##########################################################################################################
 ##########################################################################################################
 ##########################################################################################################
@@ -82,7 +82,7 @@ class Ring
       <!--
         This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License
         <http://creativecommons.org/licenses/by-nc/4.0/>
-        For commercial license, please contact Harlan T Wood -- wizardry@harlantwood.net
+        For commercial licenses, please contact Harlan T Wood: wizardry@harlantwood.net
       -->
       #{@strokes(target).join "\n"}
       #{if target is browser then @border width, height else ''}
