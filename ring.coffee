@@ -10,18 +10,9 @@ printer = 1
 phi = 1.6180339887498948482
 
 class Ring
-
-  chiselTip = .3
-  ringHeight = 4
-  lineHeight = chiselTip
-  # hexHeightRoom = (ringHeight - top)
-  lineHeightSpacing = lineHeight
-  lineHeightRoom = lineHeight + lineHeightSpacing
-  hexHeight = lineHeightRoom * 6
-  top = lineHeightSpacing / 2 + (ringHeight - hexHeight) / 2
-
   ringCircumference = 81.1789
   hexWidthRoom = ringCircumference / 64
+  chiselTip = hexWidthRoom / 4
   hexWidth = chiselTip * 3
   lineWidth = hexWidth
   yinOpening = chiselTip
@@ -29,7 +20,14 @@ class Ring
   hexHorizSpace = hexWidthRoom - hexWidth
   left = hexHorizSpace / 2
 
-  log pjson { ringHeight, lineHeight, top, lineHeightSpacing, hexHeight, lineHeightRoom, ringCircumference, hexWidthRoom, hexWidth, hexWidth, lineWidth, yinOpening, yinLineWidth, left }
+  ringHeight = 4
+  lineHeight = chiselTip
+  lineHeightSpacing = lineHeight
+  lineHeightRoom = lineHeight + lineHeightSpacing
+  hexHeight = lineHeight * 6 + lineHeightSpacing * 5
+  top = (ringHeight - hexHeight) / 2
+
+  log pjson { chiselTip, ringHeight, lineHeight, top, lineHeightSpacing, hexHeight, lineHeightRoom, ringCircumference, hexWidthRoom, hexWidth, hexWidth, lineWidth, yinOpening, yinLineWidth, left }
 
   strokes: (target) -> flatten @hexagramStrokes target
 
