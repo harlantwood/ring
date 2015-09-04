@@ -85,7 +85,7 @@ class Ring
         For commercial licenses, please contact Harlan T Wood: wizardry@harlantwood.net
       -->
       #{@strokes(target).join "\n"}
-      #{if target is browser then @border width, height else ''}
+      #{if target is browser then "#{@border width, height}\n" else ''}\
       </svg>
     """
 
